@@ -85,6 +85,18 @@ h1 {
  * Styles for the Score Panel
  */
 
+.star {
+    list-style-type: none;
+    display: inline-block;
+    color: #ffcd00;
+}
+
+.empty-star {
+    color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #ffcd00;
+}
+
 .score-panel {
     text-align: left;
     width: 345px;
@@ -105,5 +117,96 @@ h1 {
 
 .score-panel .restart {
     float: right;
+    cursor: pointer;
+}
+
+.moves {
+    display: inline-block;
+}
+
+/*
+ * Styles for the modal
+ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index:1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    width: 60%;
+    margin: 20% auto;
+    border-radius: 8px;
+    background-color:#f4f4f4;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+}
+
+.modal-header {
+    background: -webkit-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+    background: -o-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding:15px;
+    color:#fff;
+}
+
+.modal-header h2 {
+    text-align: center;
+    margin:0;
+}
+
+.modal-close-btn {
+    float: right;
+    font-size: 1.5em;
+    color:#fff;
+}
+
+.modal-close-btn:hover, .modal-close-btn:focus {
+    color:#000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.replay {
+    padding: 1em;
+}
+
+.modal-replay-btn {
+    display: block;
+    background-color: #8c4ed6;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    margin: auto;
+    -webkit-box-shadow: 7px 7px 30px #999999;
+    box-shadow: 7px 7px 30px #999999;
+    -webkit-transition: -webkit-box-shadow 0.5s;
+    -moz-transition: -webkit-box-shadow 0.5s;
+    -o-transition: -webkit-box-shadow 0.5s;
+    transition: -webkit-box-shadow 0.5s;
+    -o-transition: box-shadow 0.5s;
+    transition: box-shadow 0.5s, -webkit-box-shadow 0.5s;
+}
+
+.modal-replay-btn:hover, .modal-replay-btn:focus {
+    -webkit-box-shadow: 3px 3px 8px #6F6F6F;
+    box-shadow: 3px 3px 8px #6F6F6F;
+    background-color: #9759E3;
     cursor: pointer;
 }
