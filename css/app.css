@@ -1,10 +1,14 @@
 html {
+    -webkit-box-sizing: border-box; // Safari
+    -moz-box-sizing: border-box; // Firefox
     box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -31,6 +35,10 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+}
+
+.game-heading {
+    font-weight: 500;
 }
 
 /*
@@ -85,6 +93,30 @@ h1 {
  * Styles for the Score Panel
  */
 
+.score-panel {
+    text-align: left;
+    width: 85%;
+    padding: 0 35px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+#score {
+    display:inherit;
+    text-align: center;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
 .star {
     list-style-type: none;
     display: inline-block;
@@ -97,31 +129,21 @@ h1 {
     -webkit-text-stroke-color: #ffcd00;
 }
 
-.score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
-}
-
-.score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
-}
-
-.score-panel .stars li {
-    list-style: none;
-    display: inline-block;
-}
-
 .score-panel .restart {
     float: right;
     cursor: pointer;
 }
 
+#restart i {
+    padding-left: 5px;
+}
+
 .moves {
     display: inline-block;
+}
+
+#timer {
+    text-align: center;
 }
 
 /*

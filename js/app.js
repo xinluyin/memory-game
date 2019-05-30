@@ -9,6 +9,15 @@ const modalReplayBtn = document.querySelector('.modal-replay-btn');
 const modalRating = document.querySelector('.modal-body .rating');
 const modalMoves = document.querySelector('.modal-body .moves-count');
 
+// timer
+const timerHours = document.querySelector('#timer .hours');
+const timerMins = document.querySelector('#timer .minutes');
+const timerSeconds = document.querySelector('#timer .seconds');
+const modalHours = document.querySelector('.modal-body .hours');
+const modalMins = document.querySelector('.modal-body .mins');
+const modalSeconds = document.querySelector('.modal-body .seconds');
+
+
 const cards = [].slice.call(deck.children);
 
 // List of opened cards
@@ -22,6 +31,15 @@ let moves = 0;
 
 // Number of matches. Max is 8
 let matches = 0;
+
+// Total seconds elapsed since game start
+let elapsedSeconds = 0;
+let hour = 0;
+let min = 0;
+let sec = 0;
+
+// Timer
+let timer = undefined;
 
 // Game status
 let gameStarted = false;
@@ -47,6 +65,8 @@ restartGame();
 /* ----------- Main functions ----------- */
 
 function openCard(event) {
+    startTimer();
+
     let target=event.target;
     const parent=target.parentElement;
     if (parent.classList.contains('card')){
@@ -59,6 +79,31 @@ function openCard(event) {
         checkMatch();
     }
 }
+
+function startTimer() {
+    if (!gameStarted){
+        gameStarted = true;
+        timer = setInterval(setTime,1000);
+    }
+}
+
+function stopTimer(){
+    gameStarted = false;
+    clearInterval(timer);
+}
+
+function setTime(){
+    let remainderSeconds=++elapsedSeconds;
+    hour=parseInt(remainderSeconds/3600);
+    timerHours.textContent=stringifyTime(hour);
+    remainderSeconds=remainderSeconds%360;
+    min=parseInt(remainderSeconds/60);
+    timerMins.textContent=stringifyTime(min);
+    remainderSeconds=remainderSeconds%60;
+    sec=remainderSeconds;
+    timerSeconds.textContent=stringifyTime(sec);
+}
+
 
 function closeCard(card){
     setTimeout(() => {
@@ -124,6 +169,7 @@ function incrementMatches(){
 
 function checkGameWin(){
     if (matches === 8){
+        stopTimer();
         openModal();
     }
 }
@@ -145,6 +191,17 @@ function resetScore(){
 
     // reset matches
     matches=0;
+
+    // reset time
+    elapsedSeconds=0;
+    hour=0;
+    min=0;
+    sec=0;
+    timerHours.textContent='00';
+    timerMins.textContent='00';
+    timerSeconds.textContent='00';
+
+    stopTimer();
 }
 
 function resetDeck() {
@@ -168,6 +225,9 @@ function resetDeck() {
 }
 
 function openModal(){
+    modalHours.textContent = hour > 0 ? `${hour} hours, ` : '';
+    modalMins.textContent = min > 0 ? `${min} minutes, ` : '';
+    modalSeconds.textContent = `${sec} seconds`;
     modalMoves.textContent = `${moves} moves`;
     modalRating.textContent = rating;
     modal.style.display = 'block';
@@ -199,6 +259,11 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function stringifyTime(val) {
+    var valString = val + '';
+    return valString.length >= 2 ? `${val}` : `0${val}`;
 }
 
 /*

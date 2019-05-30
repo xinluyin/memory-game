@@ -12,25 +12,32 @@
 
     <div class="container">
         <header>
-            <h1>Matching Game</h1>
+            <h1 class="game-heading">Matching Game</h1>
         </header>
 
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li class="star"><i class="fa fa-star"></i></li>
-        		<li class="star"><i class="fa fa-star"></i></li>
-        		<li class="star"><i class="fa fa-star"></i></li>
-        	</ul>
+        <div class="score-panel">
+            <div id="score">
+                <ul class="stars">
+                    <li class="star"><i class="fa fa-star"></i></li>
+                    <li class="star"><i class="fa fa-star"></i></li>
+                    <li class="star"><i class="fa fa-star"></i></li>
+                </ul>
 
-            <div class="moves">
-                <span class="moves-count">0</span>
-                <span class="moves-text"> Moves</span>
+                <div class="moves">
+                    <span class="moves-count">0</span>
+                    <span class="moves-text"> Moves</span>
+                </div>
             </div>
 
+            <div id="timer">
+                <span class="hours">00</span> :
+                <span class="minutes">00</span> :
+                <span class="seconds">00</span>
+            </div>
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
-        </section>
+        </div>
 
         <ul class="deck">
             <li class="card">
@@ -96,6 +103,9 @@
             <div class="modal-body">
                 <h3>You completed the game successfully!</h3>
                 <p>It took you
+                    <span class="hours"></span>
+                    <span class="mins"></span>
+                    <span class="seconds"></span> &
                     <span class="moves-count"></span> to finish the game.
                     <br> Your rating is
                     <span class="rating"></span> out of 3.
